@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _testInput  = TextEditingController();
 
   List<String> matches = [];
+  Color regexInputColor;
 
   void _validate() {
 
@@ -80,6 +81,8 @@ class _HomePageState extends State<HomePage> {
     _regexInput.addListener(_validate);
     _testInput.addListener(_validate);
 
+    regexInputColor = Theme.of(context).primaryColor;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Regex Validator"),
@@ -104,6 +107,9 @@ class _HomePageState extends State<HomePage> {
               ),
               decoration: InputDecoration(
                 labelText: "RegEx",
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: regexInputColor)
+                )
               ),
             ),
             SizedBox(height: 15),
